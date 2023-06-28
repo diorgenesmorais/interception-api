@@ -7,13 +7,14 @@
   "author": "Diorgenes Morais <diorgenesmorais@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "start": "node src/serve"
+    "start": "node -r esm src/serve"
   },
   "dependencies": {
     "cors": "^2.8.5",
-    "dotenv": "^16.3.1",
+    "dotenv": "8.2.0",
+    "esm": "^3.2.25",
     "express": "^4.18.2",
-    "node-fetch": "^3.3.1"
+    "node-fetch": "2"
   },
   "type": "module"
 }

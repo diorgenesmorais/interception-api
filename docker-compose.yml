@@ -4,7 +4,7 @@ networks:
     name: "app-net"
 services:
   node:
-    image: "node:14"
+    image: "node:10.24.1"
     user: "node"
     container_name: middleware
     working_dir: /app

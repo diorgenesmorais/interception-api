@@ -2,6 +2,7 @@
 
 > Um middleware para interceptar as requests
 >
+> Este projeto foi configurado para executar com o Node 10.24.1
 
 - Crie um arquivo '.env' com base no modelo '.env.example
 
