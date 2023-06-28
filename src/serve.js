@@ -32,12 +32,12 @@ app.use(async (req, res) => {
         if (hasBody(req.body)) {
             requestInit['body'] = JSON.stringify(req.body);
         }
-        const resp = await fetch(getUrl(req.originalUrl), requestInit);
-        const text = await resp.text();
+        const responseFetch = await fetch(getUrl(req.url), requestInit);
+        const text = await responseFetch.text();
         if (text.includes('{')) {
-            return res.status(resp.status).json(JSON.parse(text));
+            return res.status(responseFetch.status).json(JSON.parse(text));
         }
-        return res.status(resp.status).send(text);
+        return res.status(responseFetch.status).send(text);
     } catch (error) {
         res.status(400).json({error: error.message});
     }

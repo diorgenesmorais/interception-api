@@ -1,0 +1,19 @@
+version: "3.9"
+networks:
+  app-net:
+    name: "app-net"
+services:
+  node:
+    image: "node:14"
+    user: "node"
+    container_name: middleware
+    working_dir: /app
+    volumes:
+      - ./:/app
+    ports:
+      - "4100:4100"
+    expose:
+      - "4100"
+    command: "npm start"
+    networks:
+      - "app-net"
