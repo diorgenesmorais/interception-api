@@ -2,6 +2,7 @@ import express from "express";
 import cors from "cors";
 import fetch from 'node-fetch';
 import dotenv from 'dotenv';
+import { promises as fs } from 'fs';
 
 dotenv.config();
 const app = express();
@@ -39,9 +40,19 @@ app.use(async (req, res) => {
         }
         return res.status(responseFetch.status).send(text);
     } catch (error) {
-        res.status(400).json({error: error.message});
+        await handleRequest(req, res);
     }
 });
+
+const getFiles = async (name) => {
+    return JSON.parse(await fs.readFile(`./mocks/${name}`));
+}
+
+const handleRequest = async (request, response) => {
+    console.log('Error in request URL: ', request.url);
+    const mock = await getFiles('Users.json');
+    response.status(200).json(mock);
+}
 
 app.get('/', (req, res, next) => {
     res.status(200).send('Welcome the API');
