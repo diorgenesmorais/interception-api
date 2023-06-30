@@ -1,11 +1,17 @@
 import { promises as fs } from 'fs';
 
-const getFiles = async (name) => {
-    return JSON.parse(await fs.readFile(`./mocks/${name}.json`));
+const FILEPATH = './payloads/';
+
+const getFileFullname = (name) => {
+    return `${FILEPATH}${name}.json`;
 }
 
-const getPathname = (text) => {
-    return text.split('/')[1].split('?')[0];
+const getFiles = async (name) => {
+    return JSON.parse(await fs.readFile(getFileFullname(name)));
+}
+
+const getPathname = (text = '') => {
+    return text.split('/')[1].split('?')[0].toLowerCase();
 }
 
 const getFilename = (request) => {
@@ -24,7 +30,7 @@ const handleRequest = async (request, response) => {
 const saveFiles = async (request, response, body) => {
     try {
         fs.writeFile(
-            `./mocks/${getFilename(request)}.json`, 
+            getFileFullname(getFilename(request)), 
             JSON.stringify(body, null, 2),
             'utf-8'
         );

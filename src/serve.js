@@ -36,9 +36,9 @@ app.use(async (req, res) => {
         const responseFetch = await fetch(getUrl(req.url), requestInit);
         const text = await responseFetch.text();
         if (text.includes('{')) {
-            const responseBody = JSON.parse(text);
-            saveFiles(req, res, responseBody);
-            return res.status(responseFetch.status).json(responseBody);
+            const payload = JSON.parse(text);
+            saveFiles(req, res, payload);
+            return res.status(responseFetch.status).send(payload);
         }
         return res.status(responseFetch.status).send(text);
     } catch (error) {
