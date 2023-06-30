@@ -2,6 +2,8 @@
 
 > Um middleware para interceptar as requests
 >
+> Se houver uma falha no request ou response será entregue um payload (json) correspondente ao path
+>
 > Este projeto foi configurado para executar com o Node 10.24.1
 
 - Crie um arquivo '.env' com base no modelo '.env.example
