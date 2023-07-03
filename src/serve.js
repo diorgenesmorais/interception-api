@@ -3,6 +3,7 @@ import cors from "cors";
 import fetch from 'node-fetch';
 import dotenv from 'dotenv';
 import { handleRequest, saveFiles } from './file.service';
+import { getBaseUrl } from './proxy.service';
 
 dotenv.config();
 const app = express();
@@ -33,7 +34,7 @@ app.use(async (req, res) => {
         if (hasBody(req.body)) {
             requestInit['body'] = JSON.stringify(req.body);
         }
-        const responseFetch = await fetch(getUrl(req.url), requestInit);
+        const responseFetch = await fetch(getBaseUrl(req.url), requestInit);
         const text = await responseFetch.text();
         if (text.includes('{')) {
             const payload = JSON.parse(text);

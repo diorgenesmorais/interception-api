@@ -11,7 +11,7 @@ const getFiles = async (name) => {
 }
 
 const getPathname = (text = '') => {
-    return text.split('/')[1].split('?')[0].toLowerCase();
+    return text.split('/')[2].split('?')[0].toLowerCase();
 }
 
 const getFilename = (request) => {
