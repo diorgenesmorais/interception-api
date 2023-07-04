@@ -8,9 +8,15 @@
 
 ![Arquitetura de funcionamento](./images/architecture.png)
 
+- Crie um arquivo proxy.conf.json com a mesma estrutura abaixo
+
+![Arquivo json de configuração](./images/proxy-conf.png)
+
+> Onde as target uri ('/hub-url') definiram a base URL para request
+>
 > Este projeto foi configurado para executar com o Node 10.24.1
 
-- Crie um arquivo '.env' com base no modelo '.env.example
+- Crie um arquivo '.env' com base no modelo '.env.example'
 
 ```
 cat .env.example >> .env
